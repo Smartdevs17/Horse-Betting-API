@@ -22,6 +22,9 @@ app.use(helmet());
 // app.use(morgan("common"));
 app.use(cors());
 
+app.get("/",(req,res) => {
+  res.send("Backend is running Perfectly")
+})
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 
