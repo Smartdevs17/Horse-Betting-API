@@ -4,12 +4,12 @@ const PostSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: false,
+      required: true,
       unique: true,
     },
     desc: {
       type: String,
-      required: false,
+      required: true,
     },
     photo: {
       type: String,
@@ -17,7 +17,7 @@ const PostSchema = new mongoose.Schema(
     },
     username: {
       type: String,
-      required: false,
+      required: true,
     },
     categories: {
       type: Array,

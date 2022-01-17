@@ -27,6 +27,7 @@ router.post("/register", async (req, res) => {
     const user = await newUser.save();
     const { password,...others} = user._doc;
     res.status(201).json(others);
+    console.log("Successfully Registered user")
   } catch (err) {
     res.status(500).json(err)
   }
@@ -45,31 +46,9 @@ router.post("/login", async (req, res) => {
     if(!validPassword){
       return res.status(400).json({message: "Wrong Password"})
     };
-
-    const {password,...user} = users._doc;
-    res.status(201).json(user)
-
-
-  //   await User.findOne({ email: req.body.email},(err,user) => {
-  //     if(err){
-  //       console.log(err);
-	// return;
-  //     }else if(!user){
-  //       res.status(404).json("User not found")
-	// return;
-  //     }else if(user){
-  //           const validPassword =  bcrypt.compare(req.body.password, user.password);
-  //           if(!validPassword){
-  //             res.status(400).json("Wrong Password")
-  //           }else{
-  //            // const {password,...others} = user._doc;
-  //             //     return res.status(201).json(others)
-	// 	res.status(201).json(user)
-	// 	return
-  //           }
-  //     }
-  //   });
-    
+    const {password, ...others} = user._doc;
+    res.status(201).json(others)
+    console.log("User have Successfully Login")
   } catch (err) {
     res.status(500).json(err)
   }
